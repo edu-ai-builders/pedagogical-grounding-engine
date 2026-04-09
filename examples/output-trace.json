@@ -1,0 +1,93 @@
+{
+  "meta": {
+    "papers": ["CSCL-2024: LLM-Empowered Agent for Collaborative Learning"],
+    "scenario": "大学线上研讨课，6-8人小组，沉默型学生，教师管理多个房间",
+    "generated_at": "2024-01-15T09:30:00Z",
+    "node_count": 18,
+    "edge_count": 17,
+    "decision_count": {"P0": 3, "P1": 2, "P2": 1}
+  },
+  "layout": {
+    "columns": {
+      "constraint":  {"x_range": [50,  200], "color_by": "constraint_type"},
+      "resolution":  {"x_range": [280, 420], "color": "#e9d5ff"},
+      "source_kg":   {"x_range": [500, 650], "color_by": "kg_type"},
+      "decision":    {"x_range": [780, 950], "color_by": "tpack_zone"},
+      "artifact":    {"x_range": [1080, 1250], "color": "#bbf7d0"}
+    },
+    "y_spacing": 160,
+    "note": "P0决策从y=100开始，P1从y=580开始，P2从y=900开始"
+  },
+  "color_legend": {
+    "tpack": {
+      "T":   "#93c5fd",
+      "P":   "#86efac",
+      "C":   "#fcd34d",
+      "TP":  "#a5b4fc",
+      "PK":  "#6ee7b7",
+      "CK":  "#fda4af",
+      "TPK": "#c084fc"
+    },
+    "constraint_type": {
+      "pedagogical": "#fecaca",
+      "technical":   "#bfdbfe",
+      "contextual":  "#fef08a"
+    },
+    "edge_type": {
+      "constraint_conflict":    {"color": "#ef4444", "style": "dashed"},
+      "resolution_to_decision": {"color": "#8b5cf6", "style": "solid"},
+      "cross_decision":         {"color": "#f97316", "style": "dashed"},
+      "core_support":           {"color": "#3b82f6", "style": "solid"},
+      "context_constraint":     {"color": "#f97316", "style": "solid"},
+      "inference":              {"color": "#a855f7", "style": "dashed"},
+      "artifact":               {"color": "#22c55e", "style": "solid"}
+    }
+  },
+  "nodes": [
+    {"id": "n_c001", "label": "等距发言权\n必要", "type": "constraint", "constraint_type": "pedagogical", "priority": "High", "negotiable": false, "x_hint": 100, "y_hint": 100},
+    {"id": "n_c002", "label": "低认知\n负荷", "type": "constraint", "constraint_type": "contextual", "priority": "High", "negotiable": true, "x_hint": 100, "y_hint": 260},
+    {"id": "n_c003", "label": "等待时间\n策略", "type": "constraint", "constraint_type": "pedagogical", "priority": "Medium", "negotiable": true, "x_hint": 100, "y_hint": 580},
+    {"id": "n_c004", "label": "无数据库\n约束", "type": "constraint", "constraint_type": "technical", "priority": "High", "negotiable": false, "x_hint": 100, "y_hint": 420},
+
+    {"id": "n_r001", "label": "点状仪表盘\n（牺牲精确值）", "type": "resolution", "x_hint": 350, "y_hint": 180},
+    {"id": "n_r002", "label": "90秒缓冲\n（非60秒）", "type": "resolution", "x_hint": 350, "y_hint": 620},
+    {"id": "n_r003", "label": "内存Map\n替代DB", "type": "resolution", "x_hint": 350, "y_hint": 420},
+
+    {"id": "n_kg001", "label": "发言频率→\n非活跃分类", "type": "core_kg", "source_paper": "CSCL-2024", "x_hint": 570, "y_hint": 100},
+    {"id": "n_kg002", "label": "非活跃→\n同伴式回应", "type": "core_kg", "source_paper": "CSCL-2024", "x_hint": 570, "y_hint": 600},
+    {"id": "n_kg003", "label": "教师无法\n手动干预", "type": "context_kg", "x_hint": 570, "y_hint": 750},
+    {"id": "n_inf001", "label": "私信式nudge\n[推断]", "type": "inferred", "x_hint": 570, "y_hint": 700},
+
+    {"id": "n_d001", "label": "参与度\n仪表盘", "type": "decision", "tpack_zone": "TPK", "priority": "P0", "x_hint": 860, "y_hint": 160},
+    {"id": "n_d002", "label": "过度发言\n检测", "type": "decision", "tpack_zone": "TP", "priority": "P1", "x_hint": 860, "y_hint": 400},
+    {"id": "n_d003", "label": "沉默私信\nnudge", "type": "decision", "tpack_zone": "TPK", "priority": "P0", "x_hint": 860, "y_hint": 640},
+
+    {"id": "n_a001", "label": "EngagementMeter\n组件", "type": "artifact", "artifact_type": "ui_feature", "x_hint": 1100, "y_hint": 160},
+    {"id": "n_a002", "label": "OverTalk\nToast", "type": "artifact", "artifact_type": "ui_feature", "x_hint": 1100, "y_hint": 400},
+    {"id": "n_a003", "label": "Prompt:\n静默干预规则", "type": "artifact", "artifact_type": "prompt_segment", "x_hint": 1100, "y_hint": 640},
+    {"id": "n_a004", "label": "CSV导出\n工具", "type": "artifact", "artifact_type": "ui_feature", "x_hint": 1100, "y_hint": 850}
+  ],
+  "edges": [
+    {"from": "n_c001", "to": "n_r001", "label": "conflict", "type": "constraint_conflict"},
+    {"from": "n_c002", "to": "n_r001", "label": "conflict", "type": "constraint_conflict"},
+    {"from": "n_c001", "to": "n_r002", "label": "conflict", "type": "constraint_conflict"},
+    {"from": "n_c003", "to": "n_r002", "label": "conflict", "type": "constraint_conflict"},
+    {"from": "n_c004", "to": "n_r003", "label": "conflict", "type": "constraint_conflict"},
+
+    {"from": "n_r001", "to": "n_d001", "label": "drives", "type": "resolution_to_decision"},
+    {"from": "n_r002", "to": "n_d003", "label": "drives", "type": "resolution_to_decision"},
+    {"from": "n_r003", "to": "n_d002", "label": "enables", "type": "resolution_to_decision"},
+
+    {"from": "n_kg001", "to": "n_d001", "label": "支撑", "type": "core_support"},
+    {"from": "n_kg002", "to": "n_d003", "label": "支撑", "type": "core_support"},
+    {"from": "n_kg003", "to": "n_d002", "label": "约束", "type": "context_constraint"},
+    {"from": "n_kg001", "to": "n_inf001", "label": "推断来源", "type": "inference"},
+    {"from": "n_inf001", "to": "n_d003", "label": "推断激活", "type": "inference"},
+
+    {"from": "n_d001", "to": "n_d003", "label": "影响nudge语气", "type": "cross_decision"},
+
+    {"from": "n_d001", "to": "n_a001", "label": "产出", "type": "artifact"},
+    {"from": "n_d002", "to": "n_a002", "label": "产出", "type": "artifact"},
+    {"from": "n_d003", "to": "n_a003", "label": "产出", "type": "artifact"}
+  ]
+}
