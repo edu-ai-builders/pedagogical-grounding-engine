@@ -1,0 +1,56 @@
+<svg viewBox="0 0 800 120" xmlns="http://www.w3.org/2000/svg" font-family="monospace, sans-serif">
+  <rect width="800" height="120" fill="#0f172a" rx="8"/>
+
+  <!-- Constraint -->
+  <rect x="30" y="30" width="120" height="50" rx="6" fill="#7f1d1d" stroke="#fecaca" stroke-width="1.5"/>
+  <text x="90" y="52" text-anchor="middle" fill="#fecaca" font-size="10" font-weight="bold">Constraint</text>
+  <text x="90" y="68" text-anchor="middle" fill="#fca5a5" font-size="9">教学法/技术/情境</text>
+  <text x="90" y="100" text-anchor="middle" fill="#64748b" font-size="9">约束来源</text>
+
+  <!-- Arrow -->
+  <line x1="150" y1="55" x2="180" y2="55" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="4,2" marker-end="url(#a2)"/>
+  <text x="165" y="48" text-anchor="middle" fill="#ef4444" font-size="8">冲突</text>
+
+  <!-- Resolution -->
+  <rect x="180" y="30" width="110" height="50" rx="6" fill="#3b1f4f" stroke="#e9d5ff" stroke-width="1.5"/>
+  <text x="235" y="52" text-anchor="middle" fill="#e9d5ff" font-size="10" font-weight="bold">Resolution</text>
+  <text x="235" y="68" text-anchor="middle" fill="#d8b4fe" font-size="9">取舍方案</text>
+  <text x="235" y="100" text-anchor="middle" fill="#64748b" font-size="9">约束解析</text>
+
+  <!-- Arrow -->
+  <line x1="290" y1="55" x2="320" y2="55" stroke="#8b5cf6" stroke-width="1.5" marker-end="url(#a2)"/>
+  <text x="305" y="48" text-anchor="middle" fill="#8b5cf6" font-size="8">驱动</text>
+
+  <!-- Source KG -->
+  <rect x="320" y="30" width="110" height="50" rx="6" fill="#1e3a5f" stroke="#93c5fd" stroke-width="1.5"/>
+  <text x="375" y="52" text-anchor="middle" fill="#93c5fd" font-size="10" font-weight="bold">Source KG</text>
+  <text x="375" y="68" text-anchor="middle" fill="#7dd3fc" font-size="9">论文/场景三元组</text>
+  <text x="375" y="100" text-anchor="middle" fill="#64748b" font-size="9">知识来源</text>
+
+  <!-- Arrow -->
+  <line x1="430" y1="55" x2="460" y2="55" stroke="#3b82f6" stroke-width="1.5" marker-end="url(#a2)"/>
+  <text x="445" y="48" text-anchor="middle" fill="#3b82f6" font-size="8">支撑</text>
+
+  <!-- Decision -->
+  <rect x="460" y="25" width="120" height="60" rx="6" fill="#2d1f3f" stroke="#c084fc" stroke-width="2"/>
+  <text x="520" y="48" text-anchor="middle" fill="#c084fc" font-size="10" font-weight="bold">Decision</text>
+  <text x="520" y="63" text-anchor="middle" fill="#e9d5ff" font-size="9">TPK</text>
+  <text x="520" y="78" text-anchor="middle" fill="#e9d5ff" font-size="9">P0</text>
+  <text x="520" y="100" text-anchor="middle" fill="#64748b" font-size="9">推理结果（TPK=紫）</text>
+
+  <!-- Arrow -->
+  <line x1="580" y1="55" x2="610" y2="55" stroke="#22c55e" stroke-width="1.5" marker-end="url(#a2)"/>
+  <text x="595" y="48" text-anchor="middle" fill="#22c55e" font-size="8">产出</text>
+
+  <!-- Artifact -->
+  <rect x="610" y="30" width="140" height="50" rx="6" fill="#1a2e1a" stroke="#86efac" stroke-width="1.5"/>
+  <text x="680" y="52" text-anchor="middle" fill="#86efac" font-size="10" font-weight="bold">Artifact</text>
+  <text x="680" y="68" text-anchor="middle" fill="#bbf7d0" font-size="9">UI / Prompt / Workflow</text>
+  <text x="680" y="100" text-anchor="middle" fill="#64748b" font-size="9">最终产物</text>
+
+  <defs>
+    <marker id="a2" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L6,3 z" fill="#475569"/>
+    </marker>
+  </defs>
+</svg>
